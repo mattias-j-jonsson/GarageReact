@@ -29,6 +29,10 @@ function App() {
       setCars([]);
     }
   };
+
+  const deleteCar = (id: number) => {
+    setCars(cars.filter((car) => car.id != id));
+  }
   
   handleAddCar();
 
@@ -43,8 +47,17 @@ function App() {
       {/* Parkerade fordon */}
       <div>
         <h2 className="text-emerald-400">Parkerade fordon</h2>
-        <Parked />
-        <Parked />
+        {
+          (cars.length === 0) ? (
+          <p className="text-slate-500 text-center py-8 bg-slate-800/50 rounded-xl border border-slate-800">
+              Garaget är tomt.
+            </p>)
+            : (
+            cars.map((car: ICar) => (
+                <Parked onClick={() => deleteCar(car.id)} regNumber={car.regNumber} brand={car.brand} />
+              ))
+          )
+        }
       </div>
     </div>
   );
