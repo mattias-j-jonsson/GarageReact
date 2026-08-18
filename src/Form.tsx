@@ -2,16 +2,16 @@ const Form = () => {
   return (
     <>
       <h2 className="text-emerald-400">Parkera nytt fordon</h2>
-      <form action="">
-        <label htmlFor="regnr" className="text-slate-400">
+      <form className="" action="">
+        <label htmlFor="regnr" className="text-slate-400 pr-2">
           Registreringsnummer
         </label>
-        <input type="text" required placeholder="t ex ABC123 eller DEF45G" />
-        <label htmlFor="märke" className="text-slate-400">
+        <input className="mr-2" type="text" required placeholder="t ex ABC123 eller DEF45G" />
+        <label htmlFor="märke" className="text-slate-400 mr-2">
           Märke
         </label>
-        <input type="text" required placeholder="t ex Volvo" />
-        <button className="bg-emerald-600">Parkera bil</button>
+        <input className="mx-2" type="text" required placeholder="t ex Volvo" />
+        <button className="bg-emerald-600 mx-2">Parkera bil</button>
       </form>
     </>
   );
