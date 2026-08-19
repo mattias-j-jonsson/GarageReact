@@ -17,24 +17,18 @@ function App() {
     { id: 2, regNumber: "XYZ789", brand: "Saab" }
   ]);
 
-  const handleAddCar = () => {
+  const handleAddCar = (regNumber: string, brand: string) => {
     // Tips: Validera att fälten inte är tomma (!regNumber.trim() || !brand.trim())
     // Skapa ett nytt bilobjekt med id: Date.now()
     // Uppdatera state med spread-operatorn: setCars(prev => [...prev, newCar])
     // Nollställ fälten efteråt
-    let x: number = 0;
-    if (1 < x) {
-      x = x-2;
-      console.log(x);
-      setCars([]);
-    }
+    setCars(prev => [...prev, {id: Date.now(), regNumber: regNumber, brand: brand}]);
   };
 
   const deleteCar = (id: number) => {
-    setCars(cars.filter((car) => car.id != id));
+    setCars(cars.filter((car) => car.id !== id));
   }
   
-  handleAddCar();
 
   return (
     // Rubrik och bilräknare
@@ -42,7 +36,7 @@ function App() {
       <Header numberOfCars={cars.length}/>
       {/* Parkeringsformulär */}
       <div>
-        <Form />
+        <Form addCar={handleAddCar} />
       </div>
       {/* Parkerade fordon */}
       <div>
